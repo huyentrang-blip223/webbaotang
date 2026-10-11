@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bảo Tàng Báo Chí Việt Nam | Vietnam Press Museum</title>
+  <meta name="description" content="Trang thông tin & Trải nghiệm số của Bảo tàng Báo chí Việt Nam - Nơi lưu giữ hơn 150 năm di sản báo giới cách mạng và lịch sử dân tộc.">
+  
+  <!-- Font Awesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ========================================================================
+       TOP NAVIGATION BAR
+       ======================================================================== -->
+  <header class="navbar" id="navbar">
+    <div class="container nav-container">
+      <a href="#hero" class="brand-logo">
+        <div class="emblem-icon">
+          <i class="fa-solid fa-feather-pointed"></i>
+        </div>
+        <div class="brand-text">
+          <h1>Bảo Tàng Báo Chí</h1>
+          <span>Vietnam Press Museum</span>
+        </div>
+      </a>
+
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="#hero" class="nav-link active">Trang Chủ</a></li>
+        <li><a href="#about" class="nav-link">Giới Thiệu</a></li>
+        <li><a href="#galleries" class="nav-link">Không Gian Trưng Bày</a></li>
+        <li><a href="#artifacts" class="nav-link">Kho Hiện Vật Quý</a></li>
+        <li><a href="#timeline" class="nav-link">Dòng Thời Gian</a></li>
+        <li><a href="#quiz" class="nav-link">Đố Vui Lịch Sử</a></li>
+        <li><a href="#visit" class="nav-link">Tham Quan</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="#visit" class="btn-cta">
+          <i class="fa-solid fa-calendar-check"></i>
+          <span>Đặt Lịch Hẹn</span>
+        </a>
+        <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================================================
+       HERO BANNER SECTION (Using banner.png)
+       ======================================================================== -->
+  <section class="hero-section" id="hero">
+    <div class="hero-background-wrapper">
+      <img src="assets/images/optimized/banner.jpg" alt="Không gian trưng bày Bảo tàng Báo chí Việt Nam" class="hero-bg-img">
+      <div class="hero-overlay"></div>
+    </div>
+
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="star-icon">★</span>
+          <span>Bảo Tồn Di Sản • Tôn Vinh Ngòi Bút Cách Mạng</span>
+        </div>
+
+        <h1 class="hero-title">
+          BẢO TÀNG BÁO CHÍ VIỆT NAM
+        </h1>
+
+        <div class="hero-quote-box">
+          <p class="hero-quote">
+            “Cán bộ báo chí cũng là chiến sĩ cách mạng. Cây bút, trang giấy là vũ khí sắc bén của họ.”
+          </p>
+          <span class="hero-quote-author">— Chủ tịch Hồ Chí Minh</span>
+        </div>
+
+        <div class="hero-buttons">
+          <a href="#galleries" class="btn-primary">
+            <i class="fa-solid fa-compass"></i>
+            <span>Khám Phá Trưng Bày</span>
+          </a>
+          <a href="#artifacts" class="btn-secondary">
+            <i class="fa-solid fa-layer-group"></i>
+            <span>Bộ Sưu Tập Hiện Vật</span>
+          </a>
+          <button class="btn-audio-guide" data-play-audio="bac-ho">
+            <i class="fa-solid fa-headphones"></i>
+            <span>Nghe Thuyết Minh Audio</span>
+          </button>
+        </div>
+
+        <!-- Key Metrics Bar -->
+        <div class="hero-stats">
+          <div class="stat-card">
+            <div class="stat-number">1865</div>
+            <div class="stat-label">Năm ra đời tờ báo chữ Quốc ngữ đầu tiên (Gia Định Báo)</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">20.000+</div>
+            <div class="stat-label">Hiện vật, tư liệu, báo chí gốc quý hiếm qua các thời kỳ</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">1925</div>
+            <div class="stat-label">Bác Hồ sáng lập Báo Thanh Niên - Mốc son Báo chí CM</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">100%</div>
+            <div class="stat-label">Tâm huyết bảo tồn & phụng sự giáo dục thế hệ trẻ</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       AUDIO GUIDE CONTROL BAR
+       ======================================================================== -->
+  <div class="audio-player-banner">
+    <div class="container audio-bar-inner">
+      <div class="audio-track-info">
+        <div class="audio-pulse-indicator">
+          <i class="fa-solid fa-waveform-lines"></i>
+        </div>
+        <div class="track-text">
+          <h4 id="audioTrackTitle">Lời dạy của Bác Hồ về Báo chí Cách mạng</h4>
+          <p id="audioTrackSub">Không gian tưởng niệm Chủ tịch Hồ Chí Minh</p>
+        </div>
+      </div>
+
+      <div class="audio-controls">
+        <button class="audio-play-btn" id="audioPlayBtn" aria-label="Phát thuyết minh">
+          <i class="fa-solid fa-play"></i>
+        </button>
+
+        <div class="audio-progress-wrap">
+          <div class="audio-progress-bar" id="audioProgressBar">
+            <div class="audio-progress-fill" id="audioProgressFill"></div>
+          </div>
+          <span class="audio-time" id="audioTimeDisplay">0:00 / 2:05</span>
+        </div>
+      </div>
+
+      <select class="audio-selector" id="audioTrackSelector" aria-label="Chọn chuyên đề">
+        <option value="bac-ho">Lời Bác dạy về Báo chí Cách mạng</option>
+        <option value="ngoi-but">Biểu tượng Ngòi Bút Ánh Sáng</option>
+        <option value="gia-dinh-bao">Gia Định Báo & Khởi nguyên 1865</option>
+        <option value="chien-truong">Kỷ vật Phóng viên Chiến trường</option>
+        <option value="boston-letter">Báo The Boston News-Letter (1704)</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       ABOUT SECTION
+       ======================================================================== -->
+  <section class="about-section" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-visual">
+          <div class="about-main-image">
+            <img src="assets/images/optimized/DSCF6081.jpg" alt="Biểu tượng Ngòi Bút Ánh Sáng tại Bảo tàng Báo chí Việt Nam">
+          </div>
+          <div class="about-floating-card">
+            <div class="card-icon"><i class="fa-solid fa-award"></i></div>
+            <h4>Ngôi Nhà Chung</h4>
+            <p>Hội tụ hơn 150 năm di sản vẻ vang của các thế hệ nhà báo Việt Nam dấn thân vì Tổ quốc.</p>
+          </div>
+        </div>
+
+        <div class="about-content">
+          <div class="section-tag">Di Sản & Sứ Mệnh</div>
+          <h2>Nơi Giữ Lửa Ký Ức & Tinh Hoa Báo Giới Nước Nhà</h2>
+          <p class="about-lead">
+            Bảo tàng Báo chí Việt Nam được thành lập theo Quyết định của Thủ tướng Chính phủ, là thiết chế văn hóa trang trọng do Hội Nhà báo Việt Nam trực tiếp xây dựng và quản lý.
+          </p>
+          <p class="about-desc">
+            Trải qua chặng đường sưu tầm công phu khắp mọi miền đất nước và quốc tế, bảo tàng hiện đang lưu giữ hơn 20.000 hiện vật, ấn bản gốc, thiết bị tác nghiệp vô giá. Từ tờ báo Quốc ngữ đầu tiên năm 1865, qua các trang báo nhuốm máu lửa hai cuộc kháng chiến vĩ đại, cho đến dòng chảy báo chí số đương đại hôm nay.
+          </p>
+
+          <div class="about-features">
+            <div class="feature-item">
+              <div class="feature-icon"><i class="fa-solid fa-book-journal-whills"></i></div>
+              <div class="feature-text">
+                <h4>Hệ Thống Hiện Vật Gốc</h4>
+                <p>Hàng ngàn bản báo gốc, bản thảo viết tay và kỷ vật độc bản của các nhà báo tiền bối.</p>
+              </div>
+            </div>
+
+            <div class="feature-item">
+              <div class="feature-icon"><i class="fa-solid fa-camera-retro"></i></div>
+              <div class="feature-text">
+                <h4>Kỷ Vật Chiến Trường</h4>
+                <p>Máy ảnh, máy in chữ chì, radio bán dẫn vượt mưa bom bão đạn bảo vệ sự thật.</p>
+              </div>
+            </div>
+
+            <div class="feature-item">
+              <div class="feature-icon"><i class="fa-solid fa-monument"></i></div>
+              <div class="feature-text">
+                <h4>Không Gian Nghệ Thuật</h4>
+                <p>Các cụm điêu khắc hoành tráng, tranh phù điêu đồng và biểu tượng ngòi bút rực rỡ.</p>
+              </div>
+            </div>
+
+            <div class="feature-item">
+              <div class="feature-icon"><i class="fa-solid fa-vr-cardboard"></i></div>
+              <div class="feature-text">
+                <h4>Trải Nghiệm Đa Giác Quan</h4>
+                <p>Thuyết minh âm thanh thông minh, màn hình tra cứu số hóa và mô phỏng tương tác.</p>
+              </div>
+            </div>
+          </div>
+
+          <a href="#visit" class="btn-primary">
+            <i class="fa-solid fa-ticket"></i>
+            <span>Đăng Ký Tham Quan Ngay</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       FEATURED SPOTLIGHTS
+       ======================================================================== -->
+  <section class="galleries-section" id="galleries">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Điểm Nhấn Trọng Tâm</div>
+        <h2 class="section-title">Không Gian Trưng Bày Tiêu Biểu</h2>
+        <p class="section-subtitle">
+          Những dấu ấn thiêng liêng và tầm vóc tư tưởng soi đường cho nền Báo chí Cách mạng Việt Nam
+        </p>
+        <div class="divider-gold"></div>
+      </div>
+
+      <!-- Spotlight 1: Chủ tịch Hồ Chí Minh -->
+      <div class="spotlight-card gallery-card" style="margin-bottom: 3.5rem;">
+        <div class="card-img-wrap" data-artifact-id="DSCF6084">
+          <img src="assets/images/optimized/DSCF6084.jpg" alt="Tượng Chủ tịch Hồ Chí Minh và lời dạy về báo chí cách mạng">
+          <div class="card-tag-badge">Gian Tưởng Niệm Trung Tâm</div>
+          <div class="card-zoom-overlay">
+            <div class="zoom-btn"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="card-meta">
+            <i class="fa-solid fa-landmark"></i>
+            <span>Tư Tưởng Báo Chí Hồ Chí Minh</span>
+          </div>
+          <h3 class="card-title">Lời Dạy Bất Hủ Của Chủ Tịch Hồ Chí Minh</h3>
+          <p class="card-desc">
+            Trên nền vách gỗ nâu trầm ấm, những dòng chữ mạ vàng khắc ghi lời căn dặn thiêng liêng: 
+            <em>"Cán bộ báo chí cũng là chiến sĩ cách mạng. Cây bút, trang giấy là vũ khí sắc bén của họ."</em> 
+            Phía dưới là bức tượng đồng Chủ tịch Hồ Chí Minh trang nghiêm - Người sáng lập tờ báo *Thanh Niên* ngày 21/6/1925, khởi nguồn rực rỡ cho nền Báo chí Cách mạng Việt Nam.
+          </p>
+          <div class="card-footer">
+            <button class="btn-card-detail" data-artifact-id="DSCF6084">
+              <span>Xem chi tiết hiện vật</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+            <button class="btn-audio-guide" data-play-audio="bac-ho" style="padding: 0.5rem 1rem; font-size: 0.82rem;">
+              <i class="fa-solid fa-volume-high"></i>
+              <span>Nghe audio</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Spotlight 2: Ngòi bút ánh sáng & Không gian trưng bày 1865 -->
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 4rem;">
+        <!-- Card 1 -->
+        <div class="gallery-card">
+          <div class="card-img-wrap" data-artifact-id="DSCF6081">
+            <img src="assets/images/optimized/DSCF6081.jpg" alt="Biểu tượng Ngòi Bút Ánh Sáng">
+            <div class="card-tag-badge">Điêu Khắc Đại Sảnh</div>
+            <div class="card-zoom-overlay">
+              <div class="zoom-btn"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="card-meta">
+              <i class="fa-solid fa-monument"></i>
+              <span>Biểu Tượng Tôn Vinh</span>
+            </div>
+            <h3 class="card-title">Biểu Tượng Ngòi Bút Ánh Sáng Kỳ Vĩ</h3>
+            <p class="card-desc">
+              Tác phẩm điêu khắc phát sáng khổng lồ mô phỏng hình ngòi bút máy vút cao, được kết thành từ hàng trăm tên tờ báo và cơ quan thông tấn qua các thời kỳ: Gia Định Báo, Tiếng Dân, Nhân Dân, Quân Đội Nhân Dân, Thông Tấn Xã, Đài TNVN... Biểu trưng cho ngọn đuốc tri thức và sứ mệnh phụng sự nhân dân.
+            </p>
+            <div class="card-footer">
+              <button class="btn-card-detail" data-artifact-id="DSCF6081">
+                <span>Chi tiết hiện vật</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+              <button class="btn-card-detail" data-play-audio="ngoi-but" style="color: var(--gold-light);">
+                <i class="fa-solid fa-headphones"></i>
+                <span>Thuyết minh</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="gallery-card">
+          <div class="card-img-wrap" data-artifact-id="DSCF6083">
+            <img src="assets/images/optimized/DSCF6083.jpg" alt="Báo chí Việt Nam 1865-1925">
+            <div class="card-tag-badge">Thời Kỳ Sơ Khai</div>
+            <div class="card-zoom-overlay">
+              <div class="zoom-btn"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="card-meta">
+              <i class="fa-solid fa-clock-rotate-left"></i>
+              <span>1865 - 1925</span>
+            </div>
+            <h3 class="card-title">Không Gian Báo Chí Việt Nam 1865 – 1925</h3>
+            <p class="card-desc">
+              Biển hiệu sơn mài đỏ thắm định vị giai đoạn 60 năm lịch sử từ khi tờ báo chữ Quốc ngữ đầu tiên xuất hiện ở Nam Kỳ đến trước khi Báo chí Cách mạng ra đời. Không gian trưng bày tái hiện sống động những cuộc tranh luận báo chí, sự truyền bá chữ Quốc ngữ và bước ngoặt văn hóa xã hội Việt Nam.
+            </p>
+            <div class="card-footer">
+              <button class="btn-card-detail" data-artifact-id="DSCF6083">
+                <span>Chi tiết hiện vật</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+              <span class="card-badge-origin">Khu trưng bày Cận đại</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       COMPLETE ARTIFACTS ARCHIVE (All remaining images)
+       ======================================================================== -->
+  <section class="galleries-section" id="artifacts" style="padding-top: 2rem;">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Kho Di Sản Vô Giá</div>
+        <h2 class="section-title">Bộ Sưu Tập Hiện Vật & Tài Liệu Gốc</h2>
+        <p class="section-subtitle">
+          Khám phá trọn vẹn toàn bộ các hiện vật, ấn bản quý hiếm và kỷ vật chiến trường được bảo tồn nghiêm ngặt tại bảo tàng
+        </p>
+        <div class="divider-gold"></div>
+      </div>
+
+      <!-- Filter Navigation -->
+      <div class="filter-nav">
+        <button class="filter-btn active" data-filter="all">Tất Cả Hiện Vật</button>
+        <button class="filter-btn" data-filter="origin">Khởi Nguyên 1865 - 1925</button>
+        <button class="filter-btn" data-filter="leader">Bác Hồ & Biểu Tượng</button>
+        <button class="filter-btn" data-filter="war">Kỷ Vật Chiến Trường</button>
+        <button class="filter-btn" data-filter="world">Báo Chí Thế Giới & Nghề Ảnh</button>
+      </div>
+
+      <!-- Grid of Artifacts -->
+      <div class="gallery-grid" id="artifactsGrid">
+
+        <!-- 1. DSCF6122 - Gia Định Báo -->
+        <div class="gallery-card" data-category="origin">
+          <div class="card-img-wrap" data-artifact-id="DSCF6122">
+            <img src="assets/images/optimized/DSCF6122.jpg" alt="Tờ Gia Định Báo số 4 năm 1865">
+            <div class="card-tag-badge">Quốc Bảo Báo Chí</div>
+            <div class="card-zoom-overlay">
+              <div class="zoom-btn"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="card-meta">
+              <i class="fa-solid fa-scroll"></i>
+              <span>Ấn bản số 4 • 15.7.1865</span>
+            </div>
+            <h3 class="card-title">Gia Định Báo (1865) - Học Giả Trương Vĩnh Ký</h3>
+            <p class="card-desc">
+              Tờ báo chữ Quốc ngữ đầu tiên của Việt Nam. Được người dân Nam Kỳ nồng nhiệt đón nhận, mở đường cho việc phổ biến chữ Quốc ngữ thay thế chữ Hán và tiếng Pháp.
+            </p>
+            <div class="card-footer">
+              <button class="btn-card-detail" data-artifact-id="DSCF6122">
+                <span>Xem chi tiết</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+              <span class="card-badge-origin">Nguồn: Paris & SG</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. DSCF6123 - Các dấu mốc báo chí -->
+        <div class="gallery-card" data-category="origin">
+          <div class="card-img-wrap" data-artifact-id="DSCF6123">
+            <img src="assets/images/optimized/DSCF6123.jpg" alt="Các dấu mốc báo chí tiêu biểu đầu thế kỷ XX">
+            <div class="card-tag-badge">Những Dấu Mốc</div>
+            <div class="card-zoom-overlay">
+              <div class="zoom-btn"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="card-meta">
+              <i class="fa-solid fa-newspaper"></i>
+              <span>Giai đoạn 1892 – 1919</span>
+            </div>
+            <h3 class="card-title">Đông Dương Tạp Chí & Báo Nữ Giới Chung</h3>
+            <p class="card-desc">
+              Bộ sưu tập các tờ báo danh tiếng: *Đông Dương Tạp Chí* (1913), *Đại Nam Đồng Văn Nhật Báo* (1892), *Nam Kỳ Địa Phận* (1908) và *Nữ Giới Chung* (1918) - tờ báo nữ quyền đầu tiên.
+            </p>
+            <div class="card-footer">
+              <button class="btn-card-detail" data-artifact-id="DSCF6123">
+                <span>Xem chi tiết</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+              <span class="card-badge-origin">Bảo tàng lưu trữ</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. DSCF6088 - Không gian tưởng niệm Bác Hồ -->
+        <div class="gallery-card" data-category="leader">
+          <div class="card-img-wrap" data-artifact-id="DSCF6088">
+            <img src="assets/images/optimized/DSCF6088.jpg" alt="Không gian tưởng niệm Chủ tịch Hồ Chí Minh">
+            <div class="card-tag-badge">Không Gian Thiêng Liêng</div>
+            <div class="card-zoom-overlay">
+              <div class="zoom-btn"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="card-meta">
+              <i class="fa-solid fa-star"></i>
+              <span>Gian Tưởng Niệm Trung Tâm</span>
+            </div>
+            <h3 class="card-title">Không Gian Tưởng Niệm Bác Hồ Kính Yêu</h3>
+            <p class="card-desc">
+              Nơi tri ân và tưởng nhớ Chủ tịch Hồ Chí Minh - Nhà báo vĩ đại, tấm gương sáng ngời của phong cách làm báo cách mạng giản dị, sâu sắc, sắc sảo và luôn gắn liền với vận mệnh đất nước.
+            </p>
+            <div class="card-footer">
+              <button class="btn-card-detail" data-artifact-id="DSCF6088">
+                <span>Xem chi tiết</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+              <span class="card-badge-origin">Đồng đỏ & Gỗ sồi</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. DSCF6254 - Kỷ vật nhà báo Nguyễn Khắc Cần -->
+        <div class="gallery-card" data-category="war">
+          <div class="card-img-wrap" data-artifact-id="DSCF6254">
+            <img src="assets/images/optimized/DSCF6254.jpg" alt="Huy hiệu 60 năm tuổi Đảng và đề án cách mạng 1949">
+            <div class="card-tag-badge">Kỷ Vật Kháng Chiến</div>
+            <div class="card-zoom-overlay">
+              <div class="zoom-btn"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="card-meta">
+              <i class="fa-solid fa-medal"></i>
+              <span>Niên đại 1949 – Kháng chiến</span>
+            </div>
+            <h3 class="card-title">Huy Hiệu 60 Năm Tuổi Đảng & Đề Án 1949</h3>
+            <p class="card-desc">
+              Kỷ vật thiêng liêng của nhà báo lão thành Nguyễn Khắc Cần (Đài TNND TP.HCM), cùng văn bản Đề án Cách Mạng Dân Chủ Mới Đông Dương xuất bản năm 1949 và Điều lệ Đảng thời kháng chiến.
+            </p>
+            <div class="card-footer">
+              <button class="btn-card-detail" data-artifact-id="DSCF6254">
+                <span>Xem chi tiết</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+              <span class="card-badge-origin">Chiến khu Việt Bắc</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. DSCF6255 - Máy ảnh Minolta phóng viên chiến trường -->
+        <div class="gallery-card" data-category="war">
+          <div class="card-img-wrap" data-artifact-id="DSCF6255">
+            <img src="assets/images/optimized/DSCF6255.jpg" alt="Máy ảnh Minolta Hi-Matic SD và radio bán dẫn chiến trường">
+            <div class="card-tag-badge">Vũ Khí Sắc Bén</div>
+            <div class="card-zoom-overlay">
+              <div class="zoom-btn"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="card-meta">
+              <i class="fa-solid fa-camera"></i>
+              <span>Phương Tiện Tác Nghiệp</span>
+            </div>
+            <h3 class="card-title">Máy Ảnh Minolta SD & Đài Bán Dẫn Chiến Hào</h3>
+            <p class="card-desc">
+              Chiếc máy ảnh nhỏ gọn cùng chiếc radio bán dẫn vỏ da nhuốm bụi thời gian. Những người bạn đồng hành của phóng viên chiến trường dưới làn bom đạn khốc liệt để ghi lại từng sự thật lịch sử.
+            </p>
+            <div class="card-footer">
+              <button class="btn-card-detail" data-artifact-id="DSCF6255">
+                <span>Xem chi tiết</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+              <span class="card-badge-origin">Hiện vật gốc</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. DSCF6257 - Bút sổ 1964 & Bản thảo Mậu Thân -->
+        <div class="gallery-card" data-category="war">
+          <div class="card-img-wrap" data-artifact-id="DSCF6257">
+            <img src="assets/images/optimized/DSCF6257.jpg" alt="Bút, sổ ghi chép năm 1964 và bản thảo Ký ức Mậu Thân">
+            <div class="card-tag-badge">Tài Liệu Độc Bản</div>
+            <div class="card-zoom-overlay">
+              <div class="zoom-btn"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="card-meta">
+              <i class="fa-solid fa-pen-nib"></i>
+              <span>Kỷ vật năm 1964 – 1972</span>
+            </div>
+            <h3 class="card-title">Bút Sổ Năm 1964 & Bản Thảo "Ký Ức Mậu Thân"</h3>
+            <p class="card-desc">
+              Sổ tay tác nghiệp của nhà báo Hoàng Tùng (Báo Nhân Dân), thư gửi anh Sáu Mạnh của Trần Bạch Đằng, cùng bản thảo viết tay rực lửa "Ký ức Mậu Thân 1968" của nhà báo Bùi Á.
+            </p>
+            <div class="card-footer">
+              <button class="btn-card-detail" data-artifact-id="DSCF6257">
+                <span>Xem chi tiết</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+              <span class="card-badge-origin">Báo Nhân Dân</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 7. DSCF6115 - Làng Lai Xá & Hà Nội đầu TK XX -->
+        <div class="gallery-card" data-category="world">
+          <div class="card-img-wrap" data-artifact-id="DSCF6115">
+            <img src="assets/images/optimized/DSCF6115.jpg" alt="Làng Lai Xá và Hà Nội đầu thế kỷ XX">
+            <div class="card-tag-badge">Cội Nguồn Nghề Ảnh</div>
+            <div class="card-zoom-overlay">
+              <div class="zoom-btn"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="card-meta">
+              <i class="fa-solid fa-images"></i>
+              <span>Làng Lai Xá • Hà Nội</span>
+            </div>
+            <h3 class="card-title">Làng Lai Xá & Nhiếp Ảnh Báo Chí Đầu TK XX</h3>
+            <p class="card-desc">
+              Không gian tái hiện cội nguồn nghề ảnh Việt Nam tại làng Lai Xá, công lao cụ Đặng Huy Trứ và cụ Nguyễn Đình Khánh, cùng những bức ảnh quý ghi dấu diện mạo thủ đô Hà Nội xưa.
+            </p>
+            <div class="card-footer">
+              <button class="btn-card-detail" data-artifact-id="DSCF6115">
+                <span>Xem chi tiết</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+              <span class="card-badge-origin">Hoài Đức, Hà Nội</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 8. DSCF6093 - The Boston News-Letter 1704 -->
+        <div class="gallery-card" data-category="world">
+          <div class="card-img-wrap" data-artifact-id="DSCF6093">
+            <img src="assets/images/optimized/DSCF6093.jpg" alt="Tờ The Boston News-Letter xuất bản ngày 24.4.1704">
+            <div class="card-tag-badge">Báo Chí Quốc Tế</div>
+            <div class="card-zoom-overlay">
+              <div class="zoom-btn"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="card-meta">
+              <i class="fa-solid fa-globe"></i>
+              <span>Bắc Mỹ • Ngày 24.4.1704</span>
+            </div>
+            <h3 class="card-title">The Boston News-Letter (Bản Tin Boston - 1704)</h3>
+            <p class="card-desc">
+              Được Trung tâm Lưu trữ Lịch sử Massachusetts (Mỹ) xếp là tờ báo xuất bản liên tục đầu tiên của châu Mỹ. Hiện vật quý giúp đối chiếu lịch sử phát triển truyền thông thế giới.
+            </p>
+            <div class="card-footer">
+              <button class="btn-card-detail" data-artifact-id="DSCF6093">
+                <span>Xem chi tiết</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+              <span class="card-badge-origin">Massachusetts, Mỹ</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 9. DSCF6114 - Báo Annonces 1773 -->
+        <div class="gallery-card" data-category="world">
+          <div class="card-img-wrap" data-artifact-id="DSCF6114">
+            <img src="assets/images/optimized/DSCF6114.jpg" alt="Báo Annonces ra ngày 13.01.1773 - tờ báo cổ nhất châu Phi">
+            <div class="card-tag-badge">Báo Chí Cổ Toàn Cầu</div>
+            <div class="card-zoom-overlay">
+              <div class="zoom-btn"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="card-meta">
+              <i class="fa-solid fa-earth-africa"></i>
+              <span>Mauritius • Ngày 13.01.1773</span>
+            </div>
+            <h3 class="card-title">Báo Annonces (1773) - Tờ Báo Cổ Nhất Châu Phi</h3>
+            <p class="card-desc">
+              Ấn bản đặc biệt *Annonces, Affiches et Avis Divers* phát hành năm 1773 tại Mauritius, được World Atlas đánh giá là tờ báo cổ nhất từng xuất hiện tại lục địa châu Phi.
+            </p>
+            <div class="card-footer">
+              <button class="btn-card-detail" data-artifact-id="DSCF6114">
+                <span>Xem chi tiết</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+              <span class="card-badge-origin">World Atlas công nhận</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       HISTORICAL TIMELINE
+       ======================================================================== -->
+  <section class="timeline-section" id="timeline">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Biên Niên Lịch Sử</div>
+        <h2 class="section-title">Dòng Thời Gian Báo Chí Việt Nam</h2>
+        <p class="section-subtitle">
+          Những dấu mốc vàng son định hình diện mạo và sứ mệnh ngòi bút dân tộc qua hơn một thế kỷ
+        </p>
+        <div class="divider-gold"></div>
+      </div>
+
+      <div class="timeline-tree">
+        <!-- Node 1 -->
+        <div class="timeline-node left">
+          <div class="node-dot"></div>
+          <div class="node-box">
+            <div class="node-year">1865</div>
+            <h3>Gia Định Báo Ra Đời Tại Sài Gòn</h3>
+            <p>
+              Tờ báo chữ Quốc ngữ đầu tiên của Việt Nam, mở đầu cho kỷ nguyên truyền thông hiện đại và khẳng định vị thế chữ Quốc ngữ trong đời sống văn hóa xã hội.
+            </p>
+          </div>
+        </div>
+
+        <!-- Node 2 -->
+        <div class="timeline-node right">
+          <div class="node-dot"></div>
+          <div class="node-box">
+            <div class="node-year">1869</div>
+            <h3>Nhiếp Ảnh Du Nhập Vào Việt Nam</h3>
+            <p>
+              Danh nhân Đặng Huy Trứ mở tiệm ảnh "Cảm Hiếu Đường" tại phố Thanh Hà (Hà Nội), đặt nền móng sơ khai cho nhiếp ảnh báo chí và tư liệu hình ảnh nước nhà.
+            </p>
+          </div>
+        </div>
+
+        <!-- Node 3 -->
+        <div class="timeline-node left">
+          <div class="node-dot"></div>
+          <div class="node-box">
+            <div class="node-year">1913</div>
+            <h3>Đông Dương Tạp Chí Canh Tân</h3>
+            <p>
+              Xuất bản tại Hà Nội dưới sự dẫn dắt của học giả Nguyễn Văn Vĩnh, có đóng góp to lớn trong việc phổ cập văn xuôi chữ Quốc ngữ và giới thiệu văn minh phương Tây.
+            </p>
+          </div>
+        </div>
+
+        <!-- Node 4 -->
+        <div class="timeline-node right">
+          <div class="node-dot"></div>
+          <div class="node-box">
+            <div class="node-year">1918</div>
+            <h3>Nữ Giới Chung - Tiếng Nói Phụ Nữ</h3>
+            <p>
+              Tờ báo đầu tiên của phụ nữ Việt Nam do nữ sĩ Sương Nguyệt Anh (con gái nhà thơ Nguyễn Đình Chiểu) làm chủ bút, cổ vũ bình đẳng giới và nâng cao dân trí nữ lưu.
+            </p>
+          </div>
+        </div>
+
+        <!-- Node 5 -->
+        <div class="timeline-node left">
+          <div class="node-dot"></div>
+          <div class="node-box">
+            <div class="node-year">1925</div>
+            <h3>Báo Thanh Niên & Khai Sinh Báo Chí Cách Mạng</h3>
+            <p>
+              Ngày 21/6/1925, lãnh tụ Nguyễn Ái Quốc sáng lập báo Thanh Niên tại Quảng Châu, truyền bá chủ nghĩa Mác - Lênin vào Việt Nam, trở thành Ngày Báo chí Cách mạng Việt Nam.
+            </p>
+          </div>
+        </div>
+
+        <!-- Node 6 -->
+        <div class="timeline-node right">
+          <div class="node-dot"></div>
+          <div class="node-box">
+            <div class="node-year">1945 - 1975</div>
+            <h3>Báo Chí Trong Khói Lửa Kháng Chiến</h3>
+            <p>
+              Các nhà báo cầm bút và cầm súng, in ấn báo giữa rừng sâu chiến khu Việt Bắc, bám sát chiến hào Điện Biên Phủ và Trường Sơn vì độc lập tự do của Tổ quốc.
+            </p>
+          </div>
+        </div>
+
+        <!-- Node 7 -->
+        <div class="timeline-node left">
+          <div class="node-dot"></div>
+          <div class="node-box">
+            <div class="node-year">Hiện Đại</div>
+            <h3>Báo Chí Đa Phương Tiện & Chuyển Đổi Số</h3>
+            <p>
+              Bước vào kỷ nguyên số với truyền thông hội tụ, báo chí dữ liệu và công nghệ trí tuệ nhân tạo, tiếp nối sứ mệnh phụng sự đất nước trong thời đại mới.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       INTERACTIVE MINI QUIZ
+       ======================================================================== -->
+  <section class="quiz-section" id="quiz">
+    <div class="container">
+      <div class="section-header" style="margin-bottom: 2.5rem;">
+        <div class="section-tag">Thử Thách Kiến Thức</div>
+        <h2 class="section-title">Đố Vui Lịch Sử Báo Chí</h2>
+        <p class="section-subtitle">
+          Cùng khám phá những câu hỏi thú vị để kiểm tra hiểu biết của bạn về các mốc son báo chí hào hùng!
+        </p>
+      </div>
+
+      <div class="quiz-box">
+        <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(212,175,55,0.2); padding-bottom: 0.8rem;">
+          <span style="color:var(--gold-primary); font-size:0.88rem; font-weight:700;"><i class="fa-solid fa-graduation-cap"></i> KIẾN THỨC BẢO TÀNG</span>
+          <span id="quizScoreBadge" style="background:rgba(212,175,55,0.2); border:1px solid var(--border-gold); padding:0.25rem 0.8rem; border-radius:999px; font-size:0.8rem; color:#fff;">Điểm: 0/3</span>
+        </div>
+
+        <p class="quiz-question" id="quizQText">Đang tải câu hỏi...</p>
+
+        <div class="quiz-options" id="quizOpts"></div>
+
+        <div class="quiz-feedback" id="quizFeedback"></div>
+
+        <button id="quizNextBtn" class="btn-primary" style="display:none; margin: 1.5rem auto 0;">
+          Câu hỏi tiếp theo →
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       VISIT & TOUR BOOKING
+       ======================================================================== -->
+  <section class="visit-section" id="visit">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Trải Nghiệm Thực Tế</div>
+        <h2 class="section-title">Thông Tin Tham Quan & Đăng Ký Lịch Hẹn</h2>
+        <p class="section-subtitle">
+          Bảo tàng hân hạnh đón tiếp các đoàn trường học, tổ chức, nhà nghiên cứu và du khách trong và ngoài nước
+        </p>
+        <div class="divider-gold"></div>
+      </div>
+
+      <div class="visit-grid">
+        <!-- Visitor Details -->
+        <div class="visit-info-cards">
+          <div class="info-card">
+            <div class="info-icon"><i class="fa-solid fa-map-location-dot"></i></div>
+            <div class="info-text">
+              <h3>Địa Chỉ Tọa Lạc</h3>
+              <p>Tòa nhà Hội Nhà báo Việt Nam, Phố Dương Đình Nghệ, Phường Yên Hòa, Quận Cầu Giấy, Hà Nội.</p>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <div class="info-icon"><i class="fa-solid fa-clock"></i></div>
+            <div class="info-text">
+              <h3>Thời Gian Mở Cửa</h3>
+              <p>Thứ Ba đến Chủ Nhật hàng tuần<br>Buổi sáng: 08:30 – 11:30 | Buổi chiều: 13:30 – 16:30 (Nghỉ Thứ Hai).</p>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <div class="info-icon"><i class="fa-solid fa-ticket-simple"></i></div>
+            <div class="info-text">
+              <h3>Chính Sách Vé & Thuyết Minh</h3>
+              <p>Miễn phí vé cho cựu chiến binh, người cao tuổi, học sinh dưới 10 tuổi. Hỗ trợ thuyết minh viên chuyên nghiệp cho đoàn từ 15 người trở lên.</p>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <div class="info-icon"><i class="fa-solid fa-headphones-simple"></i></div>
+            <div class="info-text">
+              <h3>Dịch Vụ Audio Guide</h3>
+              <p>Bảo tàng trang bị hệ thống tai nghe thuyết minh tự động thông minh bằng tiếng Việt và tiếng Anh tại quầy lễ tân tầng 1.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Interactive Booking Form -->
+        <div class="booking-panel">
+          <h3>Đăng Ký Đặt Lịch Tham Quan</h3>
+          <p>Điền thông tin bên dưới để nhận mã xác nhận và được chuẩn bị tiếp đón chu đáo nhất:</p>
+
+          <form id="bookingForm">
+            <div class="form-group">
+              <label for="fullName">Họ và tên người đăng ký / Đại diện đoàn *</label>
+              <input type="text" id="fullName" class="form-control" placeholder="Nguyễn Văn A" required>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="phone">Số điện thoại liên hệ *</label>
+                <input type="tel" id="phone" class="form-control" placeholder="0912 345 678" required>
+              </div>
+              <div class="form-group">
+                <label for="visitorsCount">Số lượng khách *</label>
+                <input type="number" id="visitorsCount" class="form-control" min="1" max="200" value="1" required>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="tourDate">Ngày dự kiến tham quan *</label>
+                <input type="date" id="tourDate" class="form-control" required>
+              </div>
+              <div class="form-group">
+                <label for="tourType">Hình thức tham quan</label>
+                <select id="tourType" class="form-control">
+                  <option value="Tự do có Audio Guide">Tự do trải nghiệm Audio Guide</option>
+                  <option value="Có Hướng dẫn viên thuyết minh">Đoàn có Hướng dẫn viên thuyết minh</option>
+                  <option value="Học tập chuyên đề / Nghiên cứu">Nghiên cứu / Học tập chuyên đề</option>
+                </select>
+              </div>
+            </div>
+
+            <button type="submit" class="btn-submit">
+              <i class="fa-solid fa-paper-plane" style="margin-right: 0.5rem;"></i>
+              Xác Nhận Đặt Lịch Hẹn
+            </button>
+          </form>
+
+          <div id="bookingResult" style="display:none; margin-top: 1.5rem;"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       SITE FOOTER
+       ======================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="brand-logo" style="margin-bottom: 1rem;">
+            <div class="emblem-icon">
+              <i class="fa-solid fa-feather-pointed"></i>
+            </div>
+            <div class="brand-text">
+              <h2>Bảo Tàng Báo Chí Việt Nam</h2>
+              <span>Vietnam Press Museum</span>
+            </div>
+          </div>
+          <p>
+            Ngôi nhà chung lưu giữ ký ức, tôn vinh cống hiến và truyền cảm hứng dấn thân của các thế hệ người làm báo cách mạng Việt Nam vì độc lập tự do và hạnh phúc của nhân dân.
+          </p>
+          <div class="footer-socials">
+            <a href="#" class="social-link" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" class="social-link" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            <a href="#" class="social-link" aria-label="Tiktok"><i class="fa-brands fa-tiktok"></i></a>
+            <a href="#" class="social-link" aria-label="Website"><i class="fa-solid fa-globe"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Các Không Gian</h4>
+          <ul class="footer-links">
+            <li><a href="#hero">Đại Sảnh Ngòi Bút</a></li>
+            <li><a href="#galleries">Lời Dạy Bác Hồ</a></li>
+            <li><a href="#artifacts">Gia Định Báo 1865</a></li>
+            <li><a href="#artifacts">Kỷ Vật Chiến Trường</a></li>
+            <li><a href="#artifacts">Báo Chí Thế Giới</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Liên Kết Nhanh</h4>
+          <ul class="footer-links">
+            <li><a href="#about">Về Bảo Tàng</a></li>
+            <li><a href="#timeline">Dòng Thời Gian</a></li>
+            <li><a href="#quiz">Đố Vui Lịch Sử</a></li>
+            <li><a href="#visit">Đặt Lịch Hẹn</a></li>
+            <li><a href="#hero">Thuyết Minh Audio</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Liên Hệ Trực Tiếp</h4>
+          <div class="footer-contact-item">
+            <span class="icon"><i class="fa-solid fa-location-dot"></i></span>
+            <span>Tòa nhà Hội Nhà báo Việt Nam, Phố Dương Đình Nghệ, Cầu Giấy, Hà Nội</span>
+          </div>
+          <div class="footer-contact-item">
+            <span class="icon"><i class="fa-solid fa-phone"></i></span>
+            <span>(024) 3782 4589 • Hotline: 0988 123 456</span>
+          </div>
+          <div class="footer-contact-item">
+            <span class="icon"><i class="fa-solid fa-envelope"></i></span>
+            <span>baotangbaochivn@gmail.com</span>
+          </div>
+          <div class="footer-contact-item">
+            <span class="icon"><i class="fa-solid fa-clock"></i></span>
+            <span>08:30 – 16:30 (Thứ Ba – Chủ Nhật)</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© 2026 Bảo Tàng Báo Chí Việt Nam (Vietnam Press Museum). Bản quyền thuộc Hội Nhà báo Việt Nam.</div>
+        <div style="display:flex; gap: 1.5rem;">
+          <a href="#">Điều khoản bảo tồn</a>
+          <a href="#">Chính sách tư liệu</a>
+          <a href="#">Sơ đồ trang</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================================================
+       ARTIFACT DETAIL MODAL / LIGHTBOX
+       ======================================================================== -->
+  <div class="modal-overlay" id="artifactModal">
+    <div class="modal-content">
+      <button class="modal-close-btn" id="modalCloseBtn" aria-label="Đóng">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div class="modal-body">
+        <div class="modal-image-col">
+          <img src="" alt="" id="modalImg">
+        </div>
+
+        <div class="modal-info-col">
+          <div class="modal-badge" id="modalBadge">Hiện Vật Quý</div>
+          <h2 class="modal-title" id="modalTitle">Tiêu Đề Hiện Vật</h2>
+          <div class="modal-period" id="modalPeriod">Niên Đại</div>
+          <p class="modal-desc" id="modalDesc">Mô tả hiện vật</p>
+
+          <div class="modal-specs" id="modalSpecs"></div>
+
+          <div class="modal-actions">
+            <button class="btn-primary" id="modalAudioBtn" style="padding: 0.7rem 1.4rem; font-size: 0.88rem;">
+              <i class="fa-solid fa-headphones"></i>
+              <span>Nghe Thuyết Minh</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Back To Top Button -->
+  <div class="btn-back-to-top" id="backToTop" title="Lên đầu trang">
+    <i class="fa-solid fa-arrow-up"></i>
+  </div>
+
+  <!-- Main JavaScript File -->
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,11 +1,10 @@
 /**
  * BẢO TÀNG BÁO CHÍ VIỆT NAM - VIETNAM PRESS MUSEUM
- * Interactive Features & Audio Tour Engine
+ * Interactive Features & Museum Digital Tour
  */
 
 document.addEventListener('DOMContentLoaded', () => {
   initNavbar();
-  initAudioGuide();
   initGalleryFilter();
   initModalLightbox();
   initBookingForm();
@@ -67,220 +66,6 @@ function initNavbar() {
 }
 
 /* ==========================================================================
-   2. INTERACTIVE AUDIO GUIDE ENGINE (With Web Audio Ambient Synthesizer)
-   ========================================================================== */
-const audioTracks = [
-  {
-    id: 'bac-ho',
-    title: 'Lời dạy của Bác Hồ về Báo chí Cách mạng',
-    subtitle: 'Không gian tưởng niệm Chủ tịch Hồ Chí Minh',
-    duration: 125,
-    text: 'Cán bộ báo chí cũng là chiến sĩ cách mạng. Cây bút, trang giấy là vũ khí sắc bén của họ. Báo chí là tiếng nói của Đảng, của nhân dân, phụng sự độc lập tự do của Tổ quốc.'
-  },
-  {
-    id: 'ngoi-but',
-    title: 'Biểu tượng Ngòi Bút Ánh Sáng Kỳ Vĩ',
-    subtitle: 'Đại sảnh Bảo tàng Báo chí',
-    duration: 140,
-    text: 'Ngòi bút khổng lồ vươn cao được tạo nên từ tên hàng trăm cơ quan báo chí qua nhiều thời kỳ, hội tụ tinh thần dấn thân bất khuất và sứ mệnh soi sáng của người làm báo.'
-  },
-  {
-    id: 'gia-dinh-bao',
-    title: 'Gia Định Báo (1865) - Bình minh Báo chí Quốc ngữ',
-    subtitle: 'Gian trưng bày 1865 - 1925',
-    duration: 155,
-    text: 'Gia Định Báo ra đời năm 1865 tại Sài Gòn, là mốc son mở đầu cho lịch sử báo chí chữ Quốc ngữ tại Việt Nam, gắn liền với tên tuổi học giả tiên phong Trương Vĩnh Ký.'
-  },
-  {
-    id: 'chien-truong',
-    title: 'Máy ảnh Minolta & Kỷ vật Phóng viên Chiến trường',
-    subtitle: 'Gian trưng bày Kỷ vật Kháng chiến',
-    duration: 130,
-    text: 'Những chiếc máy ảnh, đài bán dẫn và cuốn sổ tay nhuốm màu khói lửa đã theo chân các nhà báo chiến sĩ vào tận chiến trường ác liệt vì một nền độc lập dân tộc.'
-  },
-  {
-    id: 'boston-letter',
-    title: 'The Boston News-Letter (1704) & Báo Annonces (1773)',
-    subtitle: 'Gian trưng bày Báo chí Thế giới',
-    duration: 110,
-    text: 'Bộ sưu tập đối chiếu các bản in báo chí cổ xưa quý hiếm trên thế giới, khẳng định dòng chảy bất tận của thông tin trong tiến trình văn minh nhân loại.'
-  }
-];
-
-let currentTrackIndex = 0;
-let isPlaying = false;
-let audioTimer = null;
-let currentSeconds = 0;
-let audioCtx = null;
-let ambientOscillator = null;
-
-function initAudioGuide() {
-  const playBtn = document.getElementById('audioPlayBtn');
-  const trackSelector = document.getElementById('audioTrackSelector');
-  const progressFill = document.getElementById('audioProgressFill');
-  const progressBar = document.getElementById('audioProgressBar');
-  const timeDisplay = document.getElementById('audioTimeDisplay');
-  const trackTitle = document.getElementById('audioTrackTitle');
-  const trackSub = document.getElementById('audioTrackSub');
-
-  if (!playBtn) return;
-
-  function updateTrackDisplay() {
-    const track = audioTracks[currentTrackIndex];
-    if (trackTitle) trackTitle.textContent = track.title;
-    if (trackSub) trackSub.textContent = track.subtitle;
-    if (trackSelector) trackSelector.value = track.id;
-    currentSeconds = 0;
-    updateProgressUI();
-  }
-
-  function formatTime(sec) {
-    const m = Math.floor(sec / 60);
-    const s = Math.floor(sec % 60);
-    return `${m}:${s < 10 ? '0' : ''}${s}`;
-  }
-
-  function updateProgressUI() {
-    const track = audioTracks[currentTrackIndex];
-    const pct = (currentSeconds / track.duration) * 100;
-    if (progressFill) progressFill.style.width = `${pct}%`;
-    if (timeDisplay) timeDisplay.textContent = `${formatTime(currentSeconds)} / ${formatTime(track.duration)}`;
-  }
-
-  // Soft museum ambiance tone using Web Audio API
-  function startWebAudioTone() {
-    try {
-      if (!audioCtx) {
-        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-      }
-      if (audioCtx.state === 'suspended') {
-        audioCtx.resume();
-      }
-      if (!ambientOscillator) {
-        const osc = audioCtx.createOscillator();
-        const gain = audioCtx.createGain();
-        osc.type = 'sine';
-        osc.frequency.setValueAtTime(220, audioCtx.currentTime); // A3 calm note
-        gain.gain.setValueAtTime(0.015, audioCtx.currentTime); // very gentle background warmth
-        osc.connect(gain);
-        gain.connect(audioCtx.destination);
-        osc.start();
-        ambientOscillator = { osc, gain };
-      }
-    } catch (e) {
-      console.log('AudioContext initialized');
-    }
-  }
-
-  function stopWebAudioTone() {
-    if (ambientOscillator) {
-      try {
-        ambientOscillator.osc.stop();
-        ambientOscillator.osc.disconnect();
-      } catch (e) {}
-      ambientOscillator = null;
-    }
-  }
-
-  function togglePlay() {
-    isPlaying = !isPlaying;
-    const icon = playBtn.querySelector('i');
-
-    if (isPlaying) {
-      if (icon) {
-        icon.classList.remove('fa-play');
-        icon.classList.add('fa-pause');
-      }
-      playBtn.style.boxShadow = '0 0 25px rgba(212, 175, 55, 0.6)';
-      startWebAudioTone();
-
-      // Read text using Web Speech API if supported
-      if ('speechSynthesis' in window) {
-        window.speechSynthesis.cancel();
-        const utter = new SpeechSynthesisUtterance(audioTracks[currentTrackIndex].text);
-        utter.lang = 'vi-VN';
-        utter.rate = 0.92;
-        utter.pitch = 1.0;
-        utter.onend = () => {
-          // Keep timer going or loop
-        };
-        window.speechSynthesis.speak(utter);
-      }
-
-      audioTimer = setInterval(() => {
-        const track = audioTracks[currentTrackIndex];
-        if (currentSeconds < track.duration) {
-          currentSeconds++;
-          updateProgressUI();
-        } else {
-          // Track ended
-          currentSeconds = 0;
-          currentTrackIndex = (currentTrackIndex + 1) % audioTracks.length;
-          updateTrackDisplay();
-        }
-      }, 1000);
-    } else {
-      if (icon) {
-        icon.classList.remove('fa-pause');
-        icon.classList.add('fa-play');
-      }
-      playBtn.style.boxShadow = '';
-      clearInterval(audioTimer);
-      stopWebAudioTone();
-      if ('speechSynthesis' in window) {
-        window.speechSynthesis.cancel();
-      }
-    }
-  }
-
-  playBtn.addEventListener('click', togglePlay);
-
-  if (trackSelector) {
-    trackSelector.addEventListener('change', (e) => {
-      const idx = audioTracks.findIndex(t => t.id === e.target.value);
-      if (idx !== -1) {
-        currentTrackIndex = idx;
-        const wasPlaying = isPlaying;
-        if (isPlaying) togglePlay();
-        updateTrackDisplay();
-        if (wasPlaying) togglePlay();
-      }
-    });
-  }
-
-  if (progressBar) {
-    progressBar.addEventListener('click', (e) => {
-      const rect = progressBar.getBoundingClientRect();
-      const clickPos = (e.clientX - rect.left) / rect.width;
-      const track = audioTracks[currentTrackIndex];
-      currentSeconds = Math.floor(clickPos * track.duration);
-      updateProgressUI();
-    });
-  }
-
-  // Hook buttons that trigger audio guide
-  document.querySelectorAll('[data-play-audio]').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      e.preventDefault();
-      const trackId = btn.getAttribute('data-play-audio');
-      const idx = audioTracks.findIndex(t => t.id === trackId);
-      if (idx !== -1) {
-        currentTrackIndex = idx;
-        updateTrackDisplay();
-        if (!isPlaying) togglePlay();
-        // Scroll smoothly to audio bar
-        const audioBanner = document.querySelector('.audio-player-banner');
-        if (audioBanner) {
-          audioBanner.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }
-      }
-    });
-  });
-
-  updateTrackDisplay();
-}
-
-/* ==========================================================================
    3. GALLERY FILTERING
    ========================================================================== */
 function initGalleryFilter() {
@@ -329,8 +114,7 @@ const artifactDetails = {
       { label: 'Kích thước', val: 'Cao 4.5m x Rộng 2.8m' },
       { label: 'Vị trí trưng bày', val: 'Đại sảnh Bảo tàng Báo chí' },
       { label: 'Ý nghĩa', val: 'Hội tụ tinh hoa hơn 150 năm báo chí' }
-    ],
-    audioId: 'ngoi-but'
+    ]
   },
   'DSCF6084': {
     title: 'Lời Huấn Thị Bất Hủ Của Chủ Tịch Hồ Chí Minh',
@@ -343,8 +127,7 @@ const artifactDetails = {
       { label: 'Chất liệu tượng', val: 'Đồng đúc nguyên khối' },
       { label: 'Khẩu hiệu', val: 'Hợp kim mạ vàng trên gỗ sồi tự nhiên' },
       { label: 'Bối cảnh', val: 'Thư gửi các nhà báo (1962)' }
-    ],
-    audioId: 'bac-ho'
+    ]
   },
   'DSCF6088': {
     title: 'Không Gian Tưởng Niệm Chủ Tịch Hồ Chí Minh',
@@ -357,8 +140,7 @@ const artifactDetails = {
       { label: 'Vật liệu', val: 'Gỗ tự nhiên chống ẩm cao cấp' },
       { label: 'Không gian', val: 'Gian trung tâm Tầng 1' },
       { label: 'Điểm nhấn', val: 'Tượng đồng bán thân & Chiếu sáng nghệ thuật' }
-    ],
-    audioId: 'bac-ho'
+    ]
   },
   'DSCF6083': {
     title: 'Biển Định Vị: Báo Chí Việt Nam 1865 – 1925',
@@ -371,22 +153,20 @@ const artifactDetails = {
       { label: 'Niên đại tái hiện', val: '1865 - 1925 (60 năm vàng son)' },
       { label: 'Nội dung', val: 'Mở đầu kỷ nguyên báo chí chữ Quốc ngữ' },
       { label: 'Vị trí', val: 'Cổng vào khu trưng bày Cận đại' }
-    ],
-    audioId: 'gia-dinh-bao'
+    ]
   },
   'DSCF6122': {
     title: 'Gia Định Báo Số 4 (Ngày 15.7.1865)',
     period: 'Tờ Báo Chữ Quốc Ngữ Đầu Tiên Của Nước Ta',
     category: 'Ấn Phẩm Lịch Sử Quý Hiếm',
     image: 'assets/images/optimized/DSCF6122.jpg',
-    desc: 'Bản in tờ Gia Định Báo số 4 ra ngày 15 tháng 7 năm 1865 (nguồn: Thư viện Trường Ngôn ngữ & Văn minh Paris). Tờ báo ghi lại thông cáo công vụ, giá cả thị trường và các bài viết cổ vũ lối sống văn minh. Nhà báo, học giả Trương Vĩnh Ký (1837-1898) là vị chủ nhiệm tài ba đưa tờ báo đến sâu rộng trong quần chúng nhân dân.',
+    desc: 'Bản in tờ Gia Định Báo số 4 ra ngày 15 tháng 7 năm 1865 (nguồn: Thư viện Trường Ngôn ngữ & Văn minh Paris). Tờ báo ghi lại thông cáo công vụ, giá cả thị trường và các bài viết cổ vũ lối sống văn minh. Nhà báo, học giả Trương Vĩnh Ký (1837-1898) là vị chủ nhiệm tài ba đưa tờ báo đến sâu rộng trong quần thông nhân dân.',
     specs: [
       { label: 'Chủ nhiệm đầu tiên', val: 'Học giả Trương Vĩnh Ký' },
       { label: 'Nơi xuất bản', val: 'Sài Gòn - Gia Định' },
       { label: 'Ngôn ngữ', val: 'Chữ Quốc ngữ kết hợp chữ Hán' },
       { label: 'Tình trạng bảo tồn', val: 'Phục dựng nguyên bản tỷ lệ 1:1' }
-    ],
-    audioId: 'gia-dinh-bao'
+    ]
   },
   'DSCF6123': {
     title: 'Bảng Dấu Mốc Báo Chí Cổ Tiêu Biểu',
@@ -399,8 +179,7 @@ const artifactDetails = {
       { label: 'Điểm đặc sắc', val: 'Có tờ báo phụ nữ đầu tiên (Nữ Giới Chung)' },
       { label: 'Đơn vị lưu trữ', val: 'Thư viện Khoa học Tổng hợp TP.HCM' },
       { label: 'Chủ đề', val: 'Canh tân văn hóa & truyền thông tiến bộ' }
-    ],
-    audioId: 'gia-dinh-bao'
+    ]
   },
   'DSCF6115': {
     title: 'Làng Lai Xá & Ký Ức Hà Nội Đầu Thế Kỷ XX',
@@ -413,8 +192,7 @@ const artifactDetails = {
       { label: 'Nhân vật lịch sử', val: 'Cụ Đặng Huy Trứ & Cụ Nguyễn Đình Khánh' },
       { label: 'Tư liệu ảnh', val: 'Hà Nội thập niên 1900 - 1920' },
       { label: 'Vị trí', val: 'Phòng trưng bày Lịch sử Nhiếp ảnh Báo chí' }
-    ],
-    audioId: 'gia-dinh-bao'
+    ]
   },
   'DSCF6254': {
     title: 'Huy Hiệu 60 Năm Tuổi Đảng & Đề Án Cách Mạng 1949',
@@ -427,8 +205,7 @@ const artifactDetails = {
       { label: 'Cơ quan', val: 'Đài Tiếng nói Nhân dân TP.HCM (VOH)' },
       { label: 'Niên đại hiện vật', val: 'Năm 1949 & Giai đoạn sau 1954' },
       { label: 'Tình trạng', val: 'Hiện vật gốc được trao tặng cho bảo tàng' }
-    ],
-    audioId: 'chien-truong'
+    ]
   },
   'DSCF6255': {
     title: 'Máy Ảnh Minolta Hi-Matic SD & Đài Radio Chiến Trường',
@@ -441,8 +218,7 @@ const artifactDetails = {
       { label: 'Phụ kiện', val: 'Radio bán dẫn bắt sóng giải phóng, sổ tác nghiệp' },
       { label: 'Thời kỳ', val: 'Kháng chiến chống Mỹ cứu nước' },
       { label: 'Tình trạng', val: 'Nguyên bản, lưu giữ vết tích thời gian' }
-    ],
-    audioId: 'chien-truong'
+    ]
   },
   'DSCF6257': {
     title: 'Bút, Sổ Ghi Chép Năm 1964 & Bản Thảo "Ký Ức Mậu Thân"',
@@ -455,8 +231,7 @@ const artifactDetails = {
       { label: 'Cơ quan', val: 'Báo Nhân Dân, Đài Tiếng nói Việt Nam' },
       { label: 'Niên đại', val: '1964 - 1987' },
       { label: 'Tài liệu độc bản', val: 'Bản thảo tay chép trận chiến Mậu Thân 1968' }
-    ],
-    audioId: 'chien-truong'
+    ]
   },
   'DSCF6093': {
     title: 'The Boston News-Letter (Bản Tin Boston - 1704)',
@@ -469,8 +244,7 @@ const artifactDetails = {
       { label: 'Địa điểm', val: 'Boston, Massachusetts, Bắc Mỹ' },
       { label: 'Ý nghĩa quốc tế', val: 'Tờ báo đầu tiên phát hành định kỳ châu Mỹ' },
       { label: 'Đơn vị xác nhận', val: 'Massachusetts Historical Society' }
-    ],
-    audioId: 'boston-letter'
+    ]
   },
   'DSCF6114': {
     title: 'Báo Annonces, Affiches et Avis Divers (1773)',
@@ -483,8 +257,7 @@ const artifactDetails = {
       { label: 'Địa danh', val: 'Quần đảo Mauritius, Ấn Độ Dương' },
       { label: 'Kỷ lục', val: 'Tờ báo cổ nhất lục địa châu Phi' },
       { label: 'Nguồn thẩm định', val: 'World Atlas' }
-    ],
-    audioId: 'boston-letter'
+    ]
   }
 };
 
@@ -497,7 +270,6 @@ function initModalLightbox() {
   const modalPeriod = document.getElementById('modalPeriod');
   const modalDesc = document.getElementById('modalDesc');
   const modalSpecs = document.getElementById('modalSpecs');
-  const modalAudioBtn = document.getElementById('modalAudioBtn');
 
   if (!modal) return;
 
@@ -519,10 +291,6 @@ function initModalLightbox() {
         <span class="spec-val">${s.val}</span>
       </div>
     `).join('');
-
-    if (modalAudioBtn && data.audioId) {
-      modalAudioBtn.setAttribute('data-play-audio', data.audioId);
-    }
 
     modal.classList.add('active');
     document.body.style.overflow = 'hidden';
@@ -553,15 +321,6 @@ function initModalLightbox() {
       closeModal();
     }
   });
-
-  if (modalAudioBtn) {
-    modalAudioBtn.addEventListener('click', (e) => {
-      const audioId = modalAudioBtn.getAttribute('data-play-audio');
-      closeModal();
-      const playBtn = document.querySelector(`[data-play-audio="${audioId}"]`);
-      if (playBtn) playBtn.click();
-    });
-  }
 }
 
 /* ==========================================================================

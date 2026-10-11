@@ -87,10 +87,6 @@
             <i class="fa-solid fa-layer-group"></i>
             <span>Bộ Sưu Tập Hiện Vật</span>
           </a>
-          <button class="btn-audio-guide" data-play-audio="bac-ho">
-            <i class="fa-solid fa-headphones"></i>
-            <span>Nghe Thuyết Minh Audio</span>
-          </button>
         </div>
 
         <!-- Key Metrics Bar -->
@@ -116,43 +112,6 @@
     </div>
   </section>
 
-  <!-- ========================================================================
-       AUDIO GUIDE CONTROL BAR
-       ======================================================================== -->
-  <div class="audio-player-banner">
-    <div class="container audio-bar-inner">
-      <div class="audio-track-info">
-        <div class="audio-pulse-indicator">
-          <i class="fa-solid fa-waveform-lines"></i>
-        </div>
-        <div class="track-text">
-          <h4 id="audioTrackTitle">Lời dạy của Bác Hồ về Báo chí Cách mạng</h4>
-          <p id="audioTrackSub">Không gian tưởng niệm Chủ tịch Hồ Chí Minh</p>
-        </div>
-      </div>
-
-      <div class="audio-controls">
-        <button class="audio-play-btn" id="audioPlayBtn" aria-label="Phát thuyết minh">
-          <i class="fa-solid fa-play"></i>
-        </button>
-
-        <div class="audio-progress-wrap">
-          <div class="audio-progress-bar" id="audioProgressBar">
-            <div class="audio-progress-fill" id="audioProgressFill"></div>
-          </div>
-          <span class="audio-time" id="audioTimeDisplay">0:00 / 2:05</span>
-        </div>
-      </div>
-
-      <select class="audio-selector" id="audioTrackSelector" aria-label="Chọn chuyên đề">
-        <option value="bac-ho">Lời Bác dạy về Báo chí Cách mạng</option>
-        <option value="ngoi-but">Biểu tượng Ngòi Bút Ánh Sáng</option>
-        <option value="gia-dinh-bao">Gia Định Báo & Khởi nguyên 1865</option>
-        <option value="chien-truong">Kỷ vật Phóng viên Chiến trường</option>
-        <option value="boston-letter">Báo The Boston News-Letter (1704)</option>
-      </select>
-    </div>
-  </div>
 
   <!-- ========================================================================
        ABOUT SECTION
@@ -209,8 +168,8 @@
             <div class="feature-item">
               <div class="feature-icon"><i class="fa-solid fa-vr-cardboard"></i></div>
               <div class="feature-text">
-                <h4>Trải Nghiệm Đa Giác Quan</h4>
-                <p>Thuyết minh âm thanh thông minh, màn hình tra cứu số hóa và mô phỏng tương tác.</p>
+                <h4>Trải Nghiệm Số Hóa</h4>
+                <p>Màn hình tra cứu số hóa, tư liệu tương tác và không gian tái hiện lịch sử sống động.</p>
               </div>
             </div>
           </div>
@@ -263,10 +222,6 @@
               <span>Xem chi tiết hiện vật</span>
               <i class="fa-solid fa-arrow-right"></i>
             </button>
-            <button class="btn-audio-guide" data-play-audio="bac-ho" style="padding: 0.5rem 1rem; font-size: 0.82rem;">
-              <i class="fa-solid fa-volume-high"></i>
-              <span>Nghe audio</span>
-            </button>
           </div>
         </div>
       </div>
@@ -295,10 +250,6 @@
               <button class="btn-card-detail" data-artifact-id="DSCF6081">
                 <span>Chi tiết hiện vật</span>
                 <i class="fa-solid fa-arrow-right"></i>
-              </button>
-              <button class="btn-card-detail" data-play-audio="ngoi-but" style="color: var(--gold-light);">
-                <i class="fa-solid fa-headphones"></i>
-                <span>Thuyết minh</span>
               </button>
             </div>
           </div>
@@ -788,16 +739,16 @@
           <div class="info-card">
             <div class="info-icon"><i class="fa-solid fa-ticket-simple"></i></div>
             <div class="info-text">
-              <h3>Chính Sách Vé & Thuyết Minh</h3>
-              <p>Miễn phí vé cho cựu chiến binh, người cao tuổi, học sinh dưới 10 tuổi. Hỗ trợ thuyết minh viên chuyên nghiệp cho đoàn từ 15 người trở lên.</p>
+              <h3>Chính Sách Vé & Miễn Phí</h3>
+              <p>Miễn phí vé cho cựu chiến binh, người cao tuổi, học sinh dưới 10 tuổi. Hỗ trợ đón tiếp chu đáo các đoàn tham quan học tập.</p>
             </div>
           </div>
 
           <div class="info-card">
-            <div class="info-icon"><i class="fa-solid fa-headphones-simple"></i></div>
+            <div class="info-icon"><i class="fa-solid fa-book-open-reader"></i></div>
             <div class="info-text">
-              <h3>Dịch Vụ Audio Guide</h3>
-              <p>Bảo tàng trang bị hệ thống tai nghe thuyết minh tự động thông minh bằng tiếng Việt và tiếng Anh tại quầy lễ tân tầng 1.</p>
+              <h3>Tài Liệu & Hướng Dẫn</h3>
+              <p>Cung cấp ấn phẩm giới thiệu, tờ gấp chỉ dẫn và hệ thống màn hình số hóa tra cứu thông tin chi tiết từng hiện vật tại các tầng.</p>
             </div>
           </div>
         </div>
@@ -832,8 +783,8 @@
               <div class="form-group">
                 <label for="tourType">Hình thức tham quan</label>
                 <select id="tourType" class="form-control">
-                  <option value="Tự do có Audio Guide">Tự do trải nghiệm Audio Guide</option>
-                  <option value="Có Hướng dẫn viên thuyết minh">Đoàn có Hướng dẫn viên thuyết minh</option>
+                  <option value="Tham quan tự do">Tham quan tự do cá nhân / gia đình</option>
+                  <option value="Đoàn có Hướng dẫn viên">Đoàn có Hướng dẫn viên bảo tàng</option>
                   <option value="Học tập chuyên đề / Nghiên cứu">Nghiên cứu / Học tập chuyên đề</option>
                 </select>
               </div>
@@ -896,7 +847,7 @@
             <li><a href="#timeline">Dòng Thời Gian</a></li>
             <li><a href="#quiz">Đố Vui Lịch Sử</a></li>
             <li><a href="#visit">Đặt Lịch Hẹn</a></li>
-            <li><a href="#hero">Thuyết Minh Audio</a></li>
+            <li><a href="#visit">Chính Sách Tham Quan</a></li>
           </ul>
         </div>
 
@@ -953,13 +904,6 @@
           <p class="modal-desc" id="modalDesc">Mô tả hiện vật</p>
 
           <div class="modal-specs" id="modalSpecs"></div>
-
-          <div class="modal-actions">
-            <button class="btn-primary" id="modalAudioBtn" style="padding: 0.7rem 1.4rem; font-size: 0.88rem;">
-              <i class="fa-solid fa-headphones"></i>
-              <span>Nghe Thuyết Minh</span>
-            </button>
-          </div>
         </div>
       </div>
     </div>
